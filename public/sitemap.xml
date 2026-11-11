@@ -1,4 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://rita-monteiro-psicologia.vercel.app/</loc></url>
+  <url><loc>https://rita-monteiro-psicologia.vercel.app/abordagem</loc></url>
+  <url><loc>https://rita-monteiro-psicologia.vercel.app/servicos</loc></url>
+  <url><loc>https://rita-monteiro-psicologia.vercel.app/servicos/avaliacao-psicologica</loc></url>
+  <url><loc>https://rita-monteiro-psicologia.vercel.app/servicos/intervencao-psicologica</loc></url>
+  <url><loc>https://rita-monteiro-psicologia.vercel.app/servicos/neurodesenvolvimento</loc></url>
+  <url><loc>https://rita-monteiro-psicologia.vercel.app/servicos/orientacao-parental</loc></url>
+  <url><loc>https://rita-monteiro-psicologia.vercel.app/servicos/consultoria-escolar</loc></url>
+  <url><loc>https://rita-monteiro-psicologia.vercel.app/servicos/formacao</loc></url>
+  <url><loc>https://rita-monteiro-psicologia.vercel.app/artigos</loc></url>
+  <url><loc>https://rita-monteiro-psicologia.vercel.app/recursos</loc></url>
+  <url><loc>https://rita-monteiro-psicologia.vercel.app/loja</loc></url>
+  <url><loc>https://rita-monteiro-psicologia.vercel.app/contacto</loc></url>
 </urlset>
