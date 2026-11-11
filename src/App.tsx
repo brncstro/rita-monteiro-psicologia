@@ -28,7 +28,9 @@ function App() {
   }
 
   return (
-    <main>
+    <>
+      <a className="skip-link" href="#conteudo">Saltar para o conteúdo</a>
+      <main id="conteudo">
       <header className="header">
         <a className="brand" href="#inicio" aria-label="Rita Monteiro Psicologia, início">
           <span className="brand-mark">r<span>.</span>m</span>
@@ -157,7 +159,8 @@ function App() {
           <button type="button" className="button button-dark" onClick={() => setLegalTopic(null)}>Fechar</button>
         </section>
       </div>}
-    </main>
+      </main>
+    </>
   )
 }
 
