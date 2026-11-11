@@ -30,3 +30,5 @@ Website institucional multipágina, em português de Portugal, desenvolvido com 
 - Manter `noindex, nofollow` até à validação final.
 
 O formulário atual é demonstrativo: não envia nem armazena dados. Não inserir informação clínica, diagnósticos, relatórios ou outros dados sensíveis.
+
+Última atualização técnica: preparado para publicação automática através da integração GitHub–Vercel.
