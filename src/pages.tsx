@@ -1,5 +1,5 @@
 import { useEffect, useState, type ReactNode } from 'react'
-import { ArrowRight, ArrowUpRight, Brain, Compass, HeartHandshake, BookOpen, GraduationCap, Users, Puzzle, Sprout, MessageCircle, Menu, X, Download, MonitorPlay, Package, ChevronDown, CheckCircle2, Sparkles, Accessibility, Lightbulb, Layers3 } from 'lucide-react'
+import { ArrowRight, ArrowUpRight, Brain, HeartHandshake, BookOpen, GraduationCap, Users, Puzzle, MessageCircle, Menu, X, Download, MonitorPlay, Package, CheckCircle2, Sparkles, Accessibility, Layers3 } from 'lucide-react'
 
 const services = [
   { slug:'avaliacao-psicologica', no:'01', title:'Avaliação psicológica', short:'Compreender o perfil, as necessidades e os recursos de cada criança.', icon: Puzzle, intro:'Um processo estruturado de compreensão da criança, considerando as suas características individuais e os diferentes contextos em que cresce.', details:['Clarificar as questões que motivam a procura de avaliação.','Conhecer o desenvolvimento, as competências e as áreas que podem precisar de apoio.','Integrar informação relevante da família e, quando adequado, de outros contextos.','Devolver a informação de forma clara e conversar sobre possíveis próximos passos.'], note:'A pertinência, os procedimentos e os instrumentos de avaliação são definidos caso a caso, após contacto e enquadramento profissional.' },
