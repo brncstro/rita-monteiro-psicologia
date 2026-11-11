@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { ArrowDown, ArrowUpRight, Menu, X, Heart, Sprout, Puzzle, Users, GraduationCap, BookOpen, Mail, MessageCircle, CheckCircle2, Sparkles } from 'lucide-react'
+import { ArrowDown, ArrowUpRight, Menu, X, Heart, Sprout, Puzzle, Users, GraduationCap, BookOpen, MessageCircle, CheckCircle2, Sparkles } from 'lucide-react'
 
 const services = [
   { number: '01', title: 'Avaliação psicológica', text: 'Um processo cuidado para compreender necessidades, capacidades e características individuais da criança.', icon: Puzzle },
