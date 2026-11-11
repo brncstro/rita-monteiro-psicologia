@@ -18,7 +18,7 @@ function App() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [sent, setSent] = useState(false)
   const [legalTopic, setLegalTopic] = useState<'privacidade' | 'cookies' | 'legal' | null>(null)
-  const [form, setForm] = useState({ parent: '', email: '', phone: '', service: '', message: '', consent: false })
+  const [form, setForm] = useState({ parent: '', email: '', phone: '', service: '', message: '', acknowledged: false })
 
   const update = (key: keyof typeof form, value: string | boolean) => setForm(current => ({ ...current, [key]: value }))
 
@@ -111,7 +111,7 @@ function App() {
           <div className="section-kicker">04 — PRIMEIRO PASSO</div>
           <h2>Vamos falar<br /><em>sobre isso?</em></h2>
           <p>Se procura informação ou pretende perceber se este acompanhamento faz sentido para a sua família, envie um pedido de contacto.</p>
-          <div className="booking-aside"><MessageCircle size={19} /><span>Os pedidos de marcação são sujeitos a confirmação. O envio deste formulário não reserva uma consulta.</span></div>
+          <div className="booking-aside"><MessageCircle size={19} /><span>Os pedidos de marcação serão sujeitos a confirmação. Esta demonstração ainda não recebe pedidos reais.</span></div>
         </div>
         <div className="form-wrap">
           {sent ? <div className="success-state"><CheckCircle2 size={35} /><h3>Formulário de demonstração preenchido</h3><p>Esta versão ainda não está ligada a um serviço de envio. Nenhuma mensagem foi enviada. A integração será configurada depois de definidos os contactos e o serviço de formulários.</p><button className="button button-dark" onClick={() => setSent(false)}>Voltar ao formulário</button></div> : <form onSubmit={submit}>
@@ -120,8 +120,8 @@ function App() {
             <label>Assunto do contacto<select required value={form.service} onChange={e => update('service', e.target.value)}><option value="">Selecione uma opção</option>{services.map(s => <option key={s.number}>{s.title}</option>)}<option>Pedido de informação geral</option></select></label>
             <label>Mensagem (opcional)<textarea rows={3} value={form.message} onChange={e => update('message', e.target.value)} placeholder="Como posso ajudar?" /></label>
             <p className="privacy-note">Por favor, não inclua diagnósticos, relatórios, informação clínica ou outros dados sensíveis neste formulário.</p>
-            <label className="consent"><input type="checkbox" required checked={form.consent} onChange={e => update('consent', e.target.checked)} /><span>Li a informação de privacidade e autorizo o contacto para resposta a este pedido.</span></label>
-            <button className="button button-dark submit-button" type="submit">Enviar pedido <ArrowUpRight size={17} /></button>
+            <label className="consent"><input type="checkbox" required checked={form.acknowledged} onChange={e => update('acknowledged', e.target.checked)} /><span>Compreendo que esta versão é demonstrativa e que o pedido não será enviado.</span></label>
+            <button className="button button-dark submit-button" type="submit">Simular pedido <ArrowUpRight size={17} /></button>
             <p className="form-disclaimer">Demonstração — o formulário ainda não envia nem armazena dados.</p>
           </form>}
         </div>
