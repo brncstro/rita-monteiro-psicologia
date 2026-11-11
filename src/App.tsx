@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { ArrowDown, ArrowUpRight, Menu, X, Heart, Sprout, Puzzle, Users, GraduationCap, BookOpen, Download, MonitorPlay, Package, MessageCircle, CheckCircle2, Sparkles } from 'lucide-react'
 
 const services = [
@@ -16,6 +16,23 @@ const nav = [
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false)
+
+  useEffect(() => {
+    const elements = document.querySelectorAll<HTMLElement>('.section-kicker, .intro-heading, .intro-text, .services-top, .service-card, .quote-band blockquote, .process-layout > h2, .step, .booking-info, .form-wrap, .journal-head, .journal-card, .resource-orb, .resources > div:not(.resource-orb), .coming-soon, .shop-heading, .shop-card')
+    elements.forEach(element => element.classList.add('reveal'))
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible')
+          observer.unobserve(entry.target)
+        }
+      })
+    }, { threshold: 0.12, rootMargin: '0px 0px -35px 0px' })
+
+    elements.forEach(element => observer.observe(element))
+    return () => observer.disconnect()
+  }, [])
   const [sent, setSent] = useState(false)
   const [legalTopic, setLegalTopic] = useState<'privacidade' | 'cookies' | 'legal' | null>(null)
   const [form, setForm] = useState({ parent: '', email: '', phone: '', service: '', message: '', acknowledged: false })
