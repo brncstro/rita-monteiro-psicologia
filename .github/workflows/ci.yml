@@ -20,3 +20,38 @@ jobs:
         run: npm install
       - name: Build production bundle
         run: npm run build
+      - name: Start production preview
+        run: |
+          npm run preview -- --host 127.0.0.1 > /tmp/vite-preview.log 2>&1 &
+          echo $! > /tmp/vite-preview.pid
+          for attempt in $(seq 1 30); do
+            if curl --silent --fail http://127.0.0.1:4173/ > /dev/null; then
+              break
+            fi
+            sleep 1
+          done
+          curl --silent --show-error --fail http://127.0.0.1:4173/ > /dev/null
+      - name: Verify direct access to every page
+        run: |
+          routes=(
+            "/"
+            "/abordagem"
+            "/servicos"
+            "/servicos/avaliacao-psicologica"
+            "/servicos/intervencao-psicologica"
+            "/servicos/neurodesenvolvimento"
+            "/servicos/orientacao-parental"
+            "/servicos/consultoria-escolar"
+            "/servicos/formacao"
+            "/artigos"
+            "/recursos"
+            "/loja"
+            "/contacto"
+            "/privacidade"
+            "/cookies"
+          )
+          for route in "${routes[@]}"; do
+            status=$(curl --silent --output /dev/null --write-out "%{http_code}" "http://127.0.0.1:4173$route")
+            echo "$status $route"
+            test "$status" = "200"
+          done
