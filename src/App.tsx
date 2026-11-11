@@ -17,6 +17,7 @@ const nav = [
 function App() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [sent, setSent] = useState(false)
+  const [legalTopic, setLegalTopic] = useState<'privacidade' | 'cookies' | 'legal' | null>(null)
   const [form, setForm] = useState({ parent: '', email: '', phone: '', service: '', message: '', consent: false })
 
   const update = (key: keyof typeof form, value: string | boolean) => setForm(current => ({ ...current, [key]: value }))
@@ -33,11 +34,11 @@ function App() {
           <span className="brand-mark">r<span>.</span>m</span>
           <span className="brand-name">Rita Monteiro<small>PSICOLOGIA</small></span>
         </a>
-        <nav className={menuOpen ? 'nav nav-open' : 'nav'}>
+        <nav id="site-navigation" aria-label="Navegação principal" className={menuOpen ? 'nav nav-open' : 'nav'}>
           {nav.map(([label, href]) => <a key={href} href={href} onClick={() => setMenuOpen(false)}>{label}</a>)}
           <a className="nav-cta" href="#marcacao" onClick={() => setMenuOpen(false)}>Pedir marcação <ArrowUpRight size={15} /></a>
         </nav>
-        <button className="menu-toggle" onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? 'Fechar menu' : 'Abrir menu'}>{menuOpen ? <X /> : <Menu />}</button>
+        <button className="menu-toggle" type="button" aria-controls="site-navigation" aria-expanded={menuOpen} onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? 'Fechar menu' : 'Abrir menu'}>{menuOpen ? <X /> : <Menu />}</button>
       </header>
 
       <section className="hero" id="inicio">
@@ -114,8 +115,8 @@ function App() {
         </div>
         <div className="form-wrap">
           {sent ? <div className="success-state"><CheckCircle2 size={35} /><h3>Formulário de demonstração preenchido</h3><p>Esta versão ainda não está ligada a um serviço de envio. Nenhuma mensagem foi enviada. A integração será configurada depois de definidos os contactos e o serviço de formulários.</p><button className="button button-dark" onClick={() => setSent(false)}>Voltar ao formulário</button></div> : <form onSubmit={submit}>
-            <label>Nome do adulto responsável<input required value={form.parent} onChange={e => update('parent', e.target.value)} placeholder="O seu nome" /></label>
-            <div className="form-row"><label>Email<input required type="email" value={form.email} onChange={e => update('email', e.target.value)} placeholder="nome@email.com" /></label><label>Telefone<input type="tel" value={form.phone} onChange={e => update('phone', e.target.value)} placeholder="O seu contacto" /></label></div>
+            <label>Nome do adulto responsável<input autoComplete="name" required value={form.parent} onChange={e => update('parent', e.target.value)} placeholder="O seu nome" /></label>
+            <div className="form-row"><label>Email<input autoComplete="email" required type="email" value={form.email} onChange={e => update('email', e.target.value)} placeholder="nome@email.com" /></label><label>Telefone<input autoComplete="tel" type="tel" value={form.phone} onChange={e => update('phone', e.target.value)} placeholder="O seu contacto" /></label></div>
             <label>Assunto do contacto<select required value={form.service} onChange={e => update('service', e.target.value)}><option value="">Selecione uma opção</option>{services.map(s => <option key={s.number}>{s.title}</option>)}<option>Pedido de informação geral</option></select></label>
             <label>Mensagem (opcional)<textarea rows={3} value={form.message} onChange={e => update('message', e.target.value)} placeholder="Como posso ajudar?" /></label>
             <p className="privacy-note">Por favor, não inclua diagnósticos, relatórios, informação clínica ou outros dados sensíveis neste formulário.</p>
@@ -143,8 +144,19 @@ function App() {
 
       <footer className="footer">
         <div className="footer-main"><a className="brand brand-footer" href="#inicio"><span className="brand-mark">r<span>.</span>m</span><span className="brand-name">Rita Monteiro<small>PSICOLOGIA</small></span></a><p>Um espaço de escuta,<br />compreensão e desenvolvimento.</p><a className="footer-top" href="#inicio">Voltar ao topo <ArrowUpRight size={15} /></a></div>
-        <div className="footer-bottom"><span>© {new Date().getFullYear()} Rita Monteiro – Psicologia</span><div><a href="mailto:contacto@exemplo.pt" onClick={e => e.preventDefault()}>Contacto <Mail size={13} /></a><a href="#privacidade">Privacidade</a><a href="#cookies">Cookies</a></div><span className="footer-placeholder">Informação legal a completar</span></div>
+        <div className="footer-bottom"><span>© {new Date().getFullYear()} Rita Monteiro – Psicologia</span><div><button type="button" className="footer-legal-link" onClick={() => setLegalTopic('privacidade')}>Privacidade</button><button type="button" className="footer-legal-link" onClick={() => setLegalTopic('cookies')}>Cookies</button><button type="button" className="footer-legal-link" onClick={() => setLegalTopic('legal')}>Informação legal</button></div><span className="footer-placeholder">Informação profissional em validação</span></div>
       </footer>
+      {legalTopic && <div className="legal-backdrop" role="presentation" onMouseDown={event => { if (event.target === event.currentTarget) setLegalTopic(null) }}>
+        <section className="legal-dialog" role="dialog" aria-modal="true" aria-labelledby="legal-title">
+          <button type="button" className="legal-close" onClick={() => setLegalTopic(null)} aria-label="Fechar">×</button>
+          <div className="section-kicker">INFORMAÇÃO AO VISITANTE</div>
+          <h2 id="legal-title">{legalTopic === 'privacidade' ? 'Privacidade' : legalTopic === 'cookies' ? 'Cookies' : 'Informação legal'}</h2>
+          {legalTopic === 'privacidade' && <><p>Este website encontra-se em fase de preparação. Antes da publicação, esta página deverá identificar a entidade responsável pelo tratamento, os contactos, as finalidades e fundamentos jurídicos, os prazos de conservação, os destinatários, os direitos dos titulares e a forma de apresentar reclamação à autoridade de controlo.</p><p><strong>Formulário:</strong> nesta versão demonstrativa, os dados introduzidos permanecem apenas no navegador durante a interação e não são enviados nem guardados pelo website. Não introduza informação clínica, diagnósticos, relatórios ou outros dados sensíveis.</p><p className="legal-warning">Texto provisório. Não constitui uma política de privacidade final e tem de ser completado e validado pela responsável antes da publicação.</p></>}
+          {legalTopic === 'cookies' && <><p>Esta versão não utiliza ferramentas próprias de análise, publicidade ou medição de audiência. Os recursos externos e eventuais integrações futuras terão de ser avaliados antes de serem ativados.</p><p>Se forem adicionados cookies não essenciais ou tecnologias equivalentes, será necessário apresentar informação adequada e obter consentimento antes da sua utilização, quando aplicável.</p><p className="legal-warning">Texto provisório. Rever após a configuração técnica definitiva do website.</p></>}
+          {legalTopic === 'legal' && <><p>Nome profissional, cédula profissional, entidade responsável, identificação fiscal e contactos oficiais ainda não foram fornecidos. Estes elementos serão inseridos apenas após confirmação.</p><p className="legal-warning">Não utilizar esta versão como informação legal definitiva.</p></>}
+          <button type="button" className="button button-dark" onClick={() => setLegalTopic(null)}>Fechar</button>
+        </section>
+      </div>}
     </main>
   )
 }
