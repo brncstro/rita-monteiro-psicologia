@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { ArrowDown, ArrowUpRight, Menu, X, Heart, Sprout, Puzzle, Users, GraduationCap, BookOpen, MessageCircle, CheckCircle2, Sparkles } from 'lucide-react'
+import { ArrowDown, ArrowUpRight, Menu, X, Heart, Sprout, Puzzle, Users, GraduationCap, BookOpen, Download, MonitorPlay, Package, MessageCircle, CheckCircle2, Sparkles } from 'lucide-react'
 
 const services = [
   { number: '01', title: 'Avaliação psicológica', text: 'Um processo cuidado para compreender necessidades, capacidades e características individuais da criança.', icon: Puzzle },
@@ -11,7 +11,7 @@ const services = [
 ]
 
 const nav = [
-  ['Início', '#inicio'], ['Sobre', '#sobre'], ['Serviços', '#servicos'], ['Artigos', '#artigos'], ['Recursos', '#recursos'],
+  ['Início', '#inicio'], ['Sobre', '#sobre'], ['Serviços', '#servicos'], ['Artigos', '#artigos'], ['Recursos', '#recursos'], ['Loja', '#loja'],
 ]
 
 function App() {
@@ -142,6 +142,18 @@ function App() {
         <div className="resource-orb"><BookOpen size={36} strokeWidth={1.2} /></div>
         <div><div className="section-kicker">06 — RECURSOS & FORMAÇÃO</div><h2>Aprender também<br />é uma forma de <em>cuidar.</em></h2><p>Este espaço será dedicado a materiais digitais, recursos educativos, ebooks e futuras formações online. Novidades em breve.</p></div>
         <span className="coming-soon">EM PREPARAÇÃO <ArrowUpRight size={15} /></span>
+      </section>
+
+      <section className="shop section-pad" id="loja">
+        <div className="shop-heading">
+          <div><div className="section-kicker">07 — LOJA & MATERIAIS</div><h2>Recursos para<br /><em>levar consigo.</em></h2></div>
+          <p>A loja será construída com conteúdos e materiais selecionados. As categorias estão preparadas, mas nenhum produto ou pagamento será apresentado como disponível antes de existir um catálogo real.</p>
+        </div>
+        <div className="shop-grid">
+          <article className="shop-card"><div className="shop-icon"><Download size={25} strokeWidth={1.4} /></div><span>01 / DIGITAIS</span><h3>Ebooks & recursos</h3><p>Materiais digitais, guias e recursos educativos para consultar ao seu ritmo.</p><small>CATÁLOGO EM PREPARAÇÃO</small></article>
+          <article className="shop-card"><div className="shop-icon"><MonitorPlay size={25} strokeWidth={1.4} /></div><span>02 / FORMAÇÃO</span><h3>Cursos online</h3><p>Formações e momentos de aprendizagem para famílias e profissionais.</p><small>CATÁLOGO EM PREPARAÇÃO</small></article>
+          <article className="shop-card"><div className="shop-icon"><Package size={25} strokeWidth={1.4} /></div><span>03 / MATERIAIS</span><h3>Produtos físicos</h3><p>Materiais e ferramentas educativas, quando existir uma seleção validada.</p><small>CATÁLOGO EM PREPARAÇÃO</small></article>
+        </div>
       </section>
 
       <footer className="footer">
