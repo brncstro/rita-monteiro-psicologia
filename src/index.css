@@ -32,3 +32,7 @@
 .pricing-table th,.pricing-table td,.assessment-table th,.assessment-table td{padding:14px 12px;font-size:10px}
 .assessment-number{width:26px;margin-right:7px}
 }
+
+.assessment-title-link{display:inline-flex;align-items:center;gap:12px}
+.assessment-title-link svg{color:var(--teal);transition:transform .2s}
+.assessment-title-link:hover svg{transform:translate(3px,-3px)}
