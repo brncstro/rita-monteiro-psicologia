@@ -36,3 +36,70 @@
 .assessment-title-link{display:inline-flex;align-items:center;gap:12px}
 .assessment-title-link svg{color:var(--teal);transition:transform .2s}
 .assessment-title-link:hover svg{transform:translate(3px,-3px)}
+
+/* Redesign editorial da área de serviços — integrado à identidade visual do site */
+.services-pricing{padding:92px 10% 100px;background:var(--paper)}
+.pricing-heading{max-width:650px;margin:0 0 42px}
+.pricing-heading .eyebrow,.assessment-intro .eyebrow{color:var(--coral)}
+.pricing-heading h2,.assessment-intro h2{font-size:clamp(39px,4.8vw,59px);line-height:1.08;margin:19px 0 18px}
+.pricing-heading p{font-size:13px;line-height:1.9;color:var(--muted);max-width:540px}
+.service-price-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.service-price-card{min-height:218px;padding:24px 23px 21px;background:var(--white);border:1px solid var(--line);display:flex;flex-direction:column;position:relative;transition:transform .25s,border-color .25s,box-shadow .25s}
+.service-price-card:hover{transform:translateY(-4px);border-color:#aebdb1;box-shadow:0 15px 35px rgba(32,46,50,.055)}
+.service-price-card-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:21px}
+.service-card-index{font-family:Georgia,serif;font-size:13px;color:var(--coral);font-style:italic}
+.service-card-mark{font-size:16px;color:#9eaaa1}
+.service-price-card h3{font-family:Manrope,sans-serif;font-size:16px;line-height:1.35;font-weight:600;letter-spacing:-.035em;color:var(--ink);margin:0 0 8px}
+.service-price-detail{font-size:10px;line-height:1.6;color:var(--muted);margin:0 0 13px}
+.service-price-values{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:auto;padding-top:20px;border-top:1px solid #e6e8e1}
+.service-price-values>div,.service-wide-prices>div{display:flex;flex-direction:column;gap:7px}
+.service-price-values span,.service-wide-prices span{font-size:8px;letter-spacing:.08em;text-transform:uppercase;color:#84908a}
+.service-price-values strong,.service-wide-prices strong{font-family:Manrope,sans-serif;font-size:19px;font-weight:600;color:var(--deep);letter-spacing:-.04em}
+.service-price-card-wide{grid-column:span 3;min-height:unset;background:#e9eee6;border-color:#dce3d9;padding:23px 25px}
+.service-price-card-wide .service-price-card-top{margin-bottom:13px}
+.service-card-label{font-size:8px;letter-spacing:.16em;color:var(--teal);font-weight:700}
+.service-wide-content{display:flex;align-items:center;justify-content:space-between;gap:30px}
+.service-wide-content h3{font-size:19px;margin-bottom:5px}
+.service-wide-prices{display:flex;gap:55px;padding-right:8%}
+.assessment-section{padding:95px 10% 105px;background:#eeeee7}
+.assessment-intro{display:grid;grid-template-columns:1.1fr .9fr;gap:10%;align-items:end;margin-bottom:48px}
+.assessment-intro h2{margin-bottom:0}
+.assessment-intro-note{display:grid;grid-template-columns:55px 1fr;column-gap:15px;align-items:center;padding-bottom:5px}
+.assessment-count{font-family:Georgia,serif;font-size:46px;line-height:1;color:var(--coral);font-style:italic;grid-row:span 2}
+.assessment-intro-note>p:first-of-type{font-family:Manrope,sans-serif;font-size:13px;font-weight:600;color:var(--deep);margin:0}
+.assessment-intro-note .assessment-explainer{grid-column:2;font-size:11px;line-height:1.8;color:var(--muted);margin:10px 0 0}
+.assessment-list-heading{display:flex;justify-content:space-between;padding:0 20px 13px 48px;border-bottom:1px solid #bfc8bd;color:#7b8980;font-size:8px;font-weight:700;letter-spacing:.17em}
+.assessment-list{border-top:0}
+.assessment-item{display:grid;grid-template-columns:30px minmax(0,1fr) auto;align-items:center;gap:16px;padding:18px 20px;border-bottom:1px solid #d9ded6;transition:background .2s}
+.assessment-item:hover{background:rgba(255,254,250,.68)}
+.assessment-item-number{font-family:Georgia,serif;font-style:italic;font-size:12px;color:#a0aaa0}
+.assessment-item-copy h3{font-family:Manrope,sans-serif;font-size:13px;line-height:1.5;font-weight:600;letter-spacing:-.02em;color:var(--ink);margin:0}
+.assessment-item-copy p{font-size:10px;line-height:1.5;color:var(--muted);margin:4px 0 0}
+.assessment-item-price{min-width:78px;text-align:right;font-family:Manrope,sans-serif;font-size:15px;font-weight:600;letter-spacing:-.035em;color:var(--deep);white-space:nowrap}
+.pricing-footnote{font-size:9px;line-height:1.8;color:#87918a;margin:17px 0 0}
+.services-directory-secondary{padding-top:85px}
+@media(max-width:900px){
+.service-price-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.service-price-card-wide{grid-column:span 2}
+.assessment-intro{gap:6%}
+}
+@media(max-width:650px){
+.services-pricing{padding:70px 7% 75px}
+.pricing-heading{margin-bottom:30px}
+.pricing-heading h2,.assessment-intro h2{font-size:clamp(37px,10vw,48px)}
+.service-price-grid{grid-template-columns:1fr;gap:10px}
+.service-price-card{min-height:unset;padding:21px 19px}
+.service-price-card-top{margin-bottom:15px}
+.service-price-card-wide{grid-column:span 1}
+.service-wide-content{align-items:flex-start;flex-direction:column;gap:16px}
+.service-wide-prices{width:100%;justify-content:flex-start;gap:50px;padding:15px 0 0;border-top:1px solid #d5ded3}
+.assessment-section{padding:72px 7% 78px}
+.assessment-intro{grid-template-columns:1fr;gap:28px;margin-bottom:34px}
+.assessment-intro-note{max-width:400px}
+.assessment-list-heading{padding:0 5px 12px 34px}
+.assessment-item{grid-template-columns:22px minmax(0,1fr) auto;gap:10px;padding:16px 5px}
+.assessment-item-copy h3{font-size:11px}
+.assessment-item-copy p{font-size:9px}
+.assessment-item-price{min-width:58px;font-size:13px}
+.assessment-count{font-size:40px}
+}
